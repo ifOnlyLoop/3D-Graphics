@@ -26,6 +26,7 @@ float wrapPi(float theta) {
 // standard C acos() function
 extern float safeAcos(float x) {
 	// Check limit conditions
+	//return (fabs(x) > 1.0f) ? (x > 0.0f) ? 0.0f : kPi : acos(x);
 	return (x <= –1.0f) ? kPi : (x >= 1.0f) ? 0.0f : acos(x);
 	/*if (x <= –1.0f) {
 		return kPi;

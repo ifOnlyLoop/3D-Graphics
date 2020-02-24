@@ -53,6 +53,10 @@ void EulerAngles::canonize() {
 	pitch = wrapPi(pitch);
 	// Now, check for "the back side" of the matrix pitch outside
 	// the canonical range of –pi/2 ... pi/2
+	/*if (abs(pitch) > kPiOver2)
+	{
+		pitch=pitch>0?
+	}*/
 	if (pitch < –kPiOver2) {
 		pitch = –kPi – pitch;
 		heading += kPi;
@@ -139,11 +143,11 @@ void EulerAngles::fromInertialToObjectQuaternion(const Quaternion& q) {
 // ignored.
 //
 // See 10.6.2 for more information.
-void EulerAngles::fromObjectToWorldMatrix(const Matrix43 & m) {
+void EulerAngles::fromObjectToWorldMatrix(const Matrix4x3 & m) {
 	// Extract sin(pitch) from m32.
 	float sp = –m.m32;
 	// Check for Gimbel lock
-	if (fabs(sp) > 9.99999f) {
+	if (fabs(sp) > 0.9999f) {
 		// Looking straight up or down
 		pitch = kPiOver2 * sp;
 		// Compute heading, slam bank to zero
@@ -166,10 +170,9 @@ void EulerAngles::fromObjectToWorldMatrix(const Matrix43 & m) {
 //
 // The matrix is assumed to be orthogonal. The translation portion is
 // ignored.
-Chapter 11: Transformations in C++ 203
 //
 // See 10.6.2 for more information.
-void EulerAngles::fromWorldToObjectMatrix(const Matrix43 & m) {
+void EulerAngles::fromWorldToObjectMatrix(const Matrix4x3 & m) {
 	// Extract sin(pitch) from m23.
 	float sp = –m.m23;
 	// Check for Gimbel lock
@@ -199,13 +202,12 @@ void EulerAngles::fromRotationMatrix(const RotationMatrix& m) {
 	// Extract sin(pitch) from m23.
 	float sp = –m.m23;
 	// Check for Gimbel lock
-	if (fabs(sp) > 9.99999f) {
+	if (fabs(sp) > 0.9999f) {
 		// Looking straight up or down
 		pitch = kPiOver2 * sp;
 		// Compute heading, slam bank to zero
 		heading = atan2(–m.m31, m.m11);
 		bank = 0.0f;
-		204 Chapter 11: Transformations in C++
 	}
 	else {
 		// Compute angles. We don't have to use the "safe" asin
