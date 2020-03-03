@@ -7,6 +7,7 @@ template<class DType> class vec3 { // DType: Data Type
 public:
 	// Public representation: Not many options here.
 	DType x, y, z;
+	bool isRowVector = 1;
 	
 	/* Constructors */
 
