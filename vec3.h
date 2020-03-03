@@ -85,7 +85,7 @@ public:
 	}
 
 	/* Vector dot product */
-	DType operator *(const v ec3& a) const { // overload
+	DType operator *(const vec3& a) const { // overload
 		return x * a.x + y * a.y + z * a.z;
 	}
 };
@@ -124,4 +124,4 @@ template<class DType> vec3<DType> dist (const vec3<DType>& a, const vec3<DType>&
  */
 
 // We provide a global zero vector constant
-extern const vec3 kZeroVector;
+template<class DType> const vec3<DType> kZeroVector;
