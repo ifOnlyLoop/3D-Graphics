@@ -10,12 +10,12 @@
 #include <math.h>
 #include "MathUtil.h"
 //---------------------------------------------------------------------------
-// "Wrap" an angle in range –pi...pi by adding the correct multiple
+// "Wrap" an angle in range ï¿½pi...pi by adding the correct multiple
 // of 2 pi
 float wrapPi(float theta) {
 	theta += kPi;
-	theta – = floor(theta * k1Over2Pi) * k2Pi;
-	theta – = kPi;
+	theta  = floor(theta * k1Over2Pi) * k2Pi;
+	theta  = kPi;
 	return theta;
 }
 //---------------------------------------------------------------------------
@@ -27,8 +27,8 @@ float wrapPi(float theta) {
 extern float safeAcos(float x) {
 	// Check limit conditions
 	//return (fabs(x) > 1.0f) ? (x > 0.0f) ? 0.0f : kPi : acos(x);
-	return (x <= –1.0f) ? kPi : (x >= 1.0f) ? 0.0f : acos(x);
-	/*if (x <= –1.0f) {
+	return (x <= 1.0f) ? kPi : (x >= 1.0f) ? 0.0f : acos(x);
+	/*if (x <= ï¿½1.0f) {
 		return kPi;
 	}
 	if (x >= 1.0f) {
