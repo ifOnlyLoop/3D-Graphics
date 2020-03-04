@@ -1,14 +1,4 @@
-/////////////////////////////////////////////////////////////////////////////
-//
-// 3D Math Primer for Graphics and Game Development
-//
-// MathUtil.h - Declarations for miscellaneous math utilities
-//
-// Visit gamemath.com for the latest version of this file.
-//
-/////////////////////////////////////////////////////////////////////////////
-#ifndef __MATHUTIL_H_INCLUDED__
-#define __MATHUTIL_H_INCLUDED__
+#pragma once
 #include <math.h>
 // Declare a global constant for pi and a few multiples.
 const float kPi = 3.14159265f;
@@ -30,5 +20,3 @@ inline void sinCos(float* returnSin, float* returnCos, float theta) {
 	*returnSin = sin(theta);
 	*returnCos = cos(theta);
 }
-/////////////////////////////////////////////////////////////////////////////
-#endif // #ifndef __MATHUTIL_H_INCLUDED__

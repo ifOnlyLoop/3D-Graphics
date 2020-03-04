@@ -12,7 +12,7 @@
 #ifndef __QUATERNION_H_INCLUDED__
 #define __QUATERNION_H_INCLUDED__
 class Vector3;
-class EulerAngles;
+//class EulerAngles;
 //---------------------------------------------------------------------------
 // class Quaternion
 //
